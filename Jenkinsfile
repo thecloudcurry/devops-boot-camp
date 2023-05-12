@@ -19,11 +19,11 @@ pipeline {
                 sh 'mvn package'
             }
         }
-//        stage('Deploying Application using Ansible') {
-//            steps {
-//                sh 'export ANSIBLE_HOST_KEY_CHECKING=False && ansible-playbook --private-key=/home/ubuntu/.ssh/vm-instance-key.pem -i host_inventory deploy-artifact.yml'
-//            }
-//        }
+        // stage('Deploying Application using Ansible') {
+        //    steps {
+        //        sh 'export ANSIBLE_HOST_KEY_CHECKING=False && ansible-playbook --private-key=/home/ubuntu/.ssh/vm-instance-key.pem -i host_inventory deploy-artifact.yml'
+        //    }
+        // }
         stage ('Install sonarqube cli') {
             steps {
                 sh 'wget -O sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip'
@@ -37,7 +37,7 @@ pipeline {
         }
         stage ('Analyzing Code Quality') {
             steps {
-                sh '/opt/sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=johnalbertodev_devops-boot-camp -Dsonar.organization=johnalbertodev -Dsonar.qualitygate.wait=true -Dsonar.qualitygate.timeout=300 -Dsonar.sources=src/main/java/ -Dsonar.java.binaries=target/classes -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=0e39526b5a7972913bac10d761b2fad101ae393f'
+                sh '/opt/sonar-scanner/bin/sonar-scanner -Dsonar.projectKey=thecloudcurry_devops-boot-camp -Dsonar.organization=thecloudcurry -Dsonar.qualitygate.wait=true -Dsonar.qualitygate.timeout=300 -Dsonar.sources=src/main/java/ -Dsonar.java.binaries=target/classes -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=fa196c95826dd3491bcbb27933ebd4f60946432e'
             }
         }
     }
