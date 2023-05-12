@@ -19,11 +19,11 @@ pipeline {
                 sh 'mvn package'
             }
         }
-        stage('Deploying Application using Ansible') {
-            steps {
-                sh 'export ANSIBLE_HOST_KEY_CHECKING=False && ansible-playbook --private-key=/home/ubuntu/.ssh/vm-instance-key.pem -i host_inventory deploy-artifact.yml'
-            }
-        }
+//        stage('Deploying Application using Ansible') {
+//            steps {
+//                sh 'export ANSIBLE_HOST_KEY_CHECKING=False && ansible-playbook --private-key=/home/ubuntu/.ssh/vm-instance-key.pem -i host_inventory deploy-artifact.yml'
+//            }
+//        }
         stage ('Install sonarqube cli') {
             steps {
                 sh 'wget -O sonar-scanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip'
